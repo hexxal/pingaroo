@@ -1,0 +1,20 @@
+{
+	"name": "Pingaroo",
+	"dockerComposeFile": [
+		"../docker-compose.yml"
+	],
+	"service": "app",
+	"workspaceFolder": "/app",
+	"runServices": [
+		"app"
+	],
+	"postCreateCommand": "cp -n local_settings.py.tpl local_settings.py",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.python"
+			]
+		}
+	},
+	"remoteUser": "pingaroo"
+}

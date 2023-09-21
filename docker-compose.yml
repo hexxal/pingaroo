@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  app:
+    container_name: pingaroo
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: tail -F somethingsomething
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=local_settings
