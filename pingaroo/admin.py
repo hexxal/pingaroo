@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from pingaroo.models import MonitorTarget, MonitorResult
+
+class MonitorTargetAdmin(admin.ModelAdmin):
+    pass
+
+
+admin.site.register(MonitorTarget, MonitorTargetAdmin)
