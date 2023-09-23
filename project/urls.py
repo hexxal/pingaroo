@@ -17,6 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from pingaroo.views import IndexView, ResultView
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='admin'),
+    path('', IndexView.as_view(), name='index'),
+    path('results/<int:pk>/', ResultView.as_view(), name='results')
 ]

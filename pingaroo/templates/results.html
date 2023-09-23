@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+    <p>{{ object.url }}</p>
+    <ul>
+    {% for result in object.results.all %}    
+        <li>
+            <p>[{{ result.created_at }}] Status: {% if result.is_down %}Down{% else %}Up{% endif %} - Latency {{ result.latency }} ms</p>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

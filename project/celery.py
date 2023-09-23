@@ -42,8 +42,9 @@ def monitor_targets():
             response = requests.get(target.url)
             latency = None
             if response.ok:
-                latency = response.elapsed.total_seconds()
-            MonitorResult.objects.create(target=target, is_down=response.ok, latency=latency)
+                latency = response.elapsed.total_seconds() * 1000
+                is_down = not response.ok
+            MonitorResult.objects.create(target=target, is_down=is_down, latency=latency)
             LOG.info(f"{target.url} in {latency}")
     except Exception as e:
         LOG.error('monitor_target error: %s', e)

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Welcome, User!</h1>
+    <p>Here is a brief walkthrough of the most recent events. See details by selecting a monitor target.</p>
+    <ul>
+        {% for target in object_list %}
+        <li>
+            <a href="{% url 'results' target.pk %}">{{ target.url }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

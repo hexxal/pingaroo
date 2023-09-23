@@ -1,16 +1,26 @@
 from django.db import models
+from django.utils import timezone
 
-class MonitorTarget(models.Model):
+
+class TimestampedModel(models.Model):
+    created_at = models.DateTimeField(editable=False, default=timezone.now)
+    updated_at = models.DateTimeField(editable=False, auto_now=True)
+
+    class Meta:
+        abstract = True
+
+
+class MonitorTarget(TimestampedModel):
     url = models.URLField()
 
     def __str__(self):
         return self.url
 
 
-class MonitorResult(models.Model):
-    target = models.ForeignKey(MonitorTarget, on_delete=models.CASCADE)
+class MonitorResult(TimestampedModel):
+    target = models.ForeignKey(MonitorTarget, on_delete=models.CASCADE, related_name='results')
     is_down = models.BooleanField()
-    latency = models.DecimalField(max_digits=5, decimal_places=3)
+    latency = models.IntegerField()
 
     def __str__(self):
         return self.target.url
