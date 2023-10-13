@@ -1,10 +1,11 @@
 html[data-theme="light"],
 :root {
     --body-bg-light: #fff;
-    --body-bg-dark: #d5d5d5;
-    --body-bg-border: #21262d; /* does it match light theme? */
+    --body-bg-dark: #b6c9d9;
+    --body-bg-border: #8395b3; /* does it match light theme? */
     --font-color: #000;
     --link-color: #0076d1;
+    --graph-bg: #000;
 }
 
 @media (prefers-color-scheme: dark) {

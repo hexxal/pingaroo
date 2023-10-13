@@ -1,12 +1,20 @@
 {% extends "base.html" %}
+{% load static %}
+{% block head %}
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+{% endblock %}
 {% block content %}
-    <h1>Welcome, User!</h1>
-    <p>Here is a brief walkthrough of the most recent events. See details by selecting a monitor target.</p>
-    <ul>
-        {% for target in object_list %}
-        <li>
-            <a href="{% url 'results' target.pk %}">{{ target.url }}</a>
-        </li>
-        {% endfor %}
-    </ul>
+<h1>Welcome, User!</h1>
+<p>Here is a brief walkthrough of the most recent events. See details by selecting a monitor target.</p>
+<ul>
+    {% for target in object_list %}
+    <div class="chart-wrapper">
+        <h4 class="chart-title">{{ target.url }}</h4>
+        <figure class="chart"></figure>
+    </div>
+    {% endfor %}
+</ul>
+
+<script src="{% static 'pingaroo/script.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts@3.29.1/dist/apexcharts.min.js"></script>
 {% endblock %}

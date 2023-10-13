@@ -20,7 +20,7 @@ class MonitorTarget(TimestampedModel):
 class MonitorResult(TimestampedModel):
     target = models.ForeignKey(MonitorTarget, on_delete=models.CASCADE, related_name='results')
     is_down = models.BooleanField()
-    latency = models.IntegerField()
+    latency = models.IntegerField(null=True)
 
     def __str__(self):
         return self.target.url

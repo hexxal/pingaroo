@@ -45,7 +45,7 @@ main {
     grid-area: main;
     width: 100%;
     height: 100%;
-    max-width: 800px;
+    max-width: 1140px;
     justify-self: center;
     margin: 20px auto;
     padding: 0 2rem;
@@ -77,4 +77,32 @@ header {
     align-items: center;
     gap: 0.5rem;
     padding: 0 0.5rem  0 0.5rem;
+}
+
+/* Charts */
+.chart-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    background-color: var(--body-bg-dark);
+    border: 1px solid var(--body-bg-border);
+    padding: 0 1rem 0 1rem;
+    height: 6rem;
+}
+.chart-title {
+    width: 10rem;
+}
+#chart {
+    flex-grow: 1;
+    margin: 0;
+}
+
+figure {
+    width: 80%;
+    margin: 0;
+}
+
+.chart-wrapper {
+    margin-bottom: 1rem;
 }
