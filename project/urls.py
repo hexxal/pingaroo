@@ -15,13 +15,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.conf import settings
+from django.urls import path, include
+from pingaroo.views import LoginView
 
-from pingaroo.views import IndexView, ResultView, foo_api_view
+from pingaroo.views import IndexView, ResultView, foo_api_view, NewSiteView, SitesView
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('', IndexView.as_view(), name='index'),
     path('results/<int:pk>/', ResultView.as_view(), name='results'),
-    path('api/foo/', foo_api_view, name='foo')
+    path('sites/', SitesView.as_view(), name='sites'),
+    path('new_site/', NewSiteView.as_view(), name='new_site'),
+    path('api/foo/', foo_api_view, name='foo'),
+    path('__debug__/', include('debug_toolbar.urls')),
+    path('login/', LoginView.as_view(template_name='login.html'), name='login'),
 ]
+

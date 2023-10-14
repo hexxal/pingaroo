@@ -24,10 +24,12 @@
         </svg>
         <h1>Pingaroo</h1>
     </header>
+    {% block aside%}
     <aside>
-        <a href="#">Home</a>
-        <a href="#">Monitors</a>
+        <a href="{% url 'index' %}">Overview</a>
+        <a href="{% url 'sites' %}">Sites</a>
     </aside>
+    {% endblock %}
     <main>
         {% block content %}
         {% endblock %}

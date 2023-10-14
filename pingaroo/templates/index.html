@@ -4,8 +4,17 @@
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 {% endblock %}
 {% block content %}
-<h1>Welcome, User!</h1>
+{% if request.user.name %}
+    <h1>Welcome, {{ request.user.name }}</h1>
+{% else %}
+    <h1>Welcome, {{ request.user.email }}</h1>
+{% endif %}
+
 <p>Here is a brief walkthrough of the most recent events. See details by selecting a monitor target.</p>
+
+{% if not object_list %}
+    <h4>You haven't added sites to be monitored. You can do that <a href="{% url 'new_site' %}">here</a>.</h4>
+{% else %}
 <ul>
     {% for target in object_list %}
     <div class="chart-wrapper">
@@ -14,6 +23,7 @@
     </div>
     {% endfor %}
 </ul>
+{% endif %}
 
 <script src="{% static 'pingaroo/script.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.29.1/dist/apexcharts.min.js"></script>

@@ -9,6 +9,11 @@ fetch('http://localhost:8000/api/foo/')
             var author = data[index];
             if (author) {
                 var options = {
+                    tooltip: {
+                        custom: function({ series, seriesIndex, dataPointIndex, w }) {
+                          return 'Latency: ' + w.globals.series[seriesIndex][dataPointIndex] + 'ms';
+                        }
+                      },
                     series: author.results.series,
                     chart: {
                         type: 'line',
